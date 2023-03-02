@@ -1,0 +1,6 @@
+body{
+  background-color: #63DEE2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%2394cc77' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23760000' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%239eb95e' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%237f0019' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23a5a649' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%2384002d' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23a9933a' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23830043' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23ab7f31' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%237d0059' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa6b2e' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23700070' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
