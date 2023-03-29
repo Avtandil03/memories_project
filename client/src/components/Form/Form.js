@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 
 import useStyles from "./syles";
 
-const Form = ({setCurrentID, currentId}) => {
+const Form = ({setCurrentId, currentId}) => {
   const [postData, setPostData] = useState({
      title: '', message: '', tags: '', selectedFile: '',
   })
-  const post = useSelector((state) => currentId ? state.posts.find(p => p._id === currentId) : null)
+  const post = useSelector((state) => (currentId ? state.posts.posts.find(p => p._id === currentId) : null))
   const classes = useStyles();
   const dispatch = useDispatch()
   const user = JSON.parse(localStorage.getItem('profile'))
@@ -32,7 +32,7 @@ const Form = ({setCurrentID, currentId}) => {
   };
 
   const clear = () => {
-    setCurrentID(null)
+    setCurrentId(null)
     setPostData({ title: '', message: '', tags: '', selectedFile: '',})
   }
 
