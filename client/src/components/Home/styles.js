@@ -17,4 +17,7 @@ export default makeStyles((theme) => ({
       flexDirection: 'column-reverse',
     },
   },
+  searchChipIn: {
+    margin: '10px 0'
+  }
 }));
