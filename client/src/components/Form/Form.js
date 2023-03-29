@@ -47,7 +47,7 @@ const Form = ({setCurrentID, currentId}) => {
   }
 
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} elevation={6}>
       <form
         className={`${classes.root} ${classes.form}`}
         autoComplete="off"
