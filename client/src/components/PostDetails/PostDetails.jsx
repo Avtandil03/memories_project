@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
 import useStyles from './styles'
-import { Link, useParams } from 'react-router-dom';
-import { getPost } from '../../actions/posts';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { getPost, getPostBySearch } from '../../actions/posts';
 
 const PostDetails = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { post, posts, isLoading } = useSelector((state) => state.posts)
   const {id} = useParams()
 
@@ -17,12 +18,22 @@ const PostDetails = () => {
     dispatch(getPost(id))
   }, [id])
 
+  useEffect(() => {
+    if (post) {
+      dispatch(getPostBySearch({ search: 'none', tags: post?.tags.join(',') }));
+    }
+  }, [post]);
+
   if(!post) return null
   if(isLoading ) return (
     <Paper className={classes.loadingPaper} elevation={6} >
       <CircularProgress size='7em'/>
     </Paper>
   )
+
+  const recommendedPosts = posts?.filter(({_id}) => _id !==post._id)
+
+  const openPost = (id) => navigate(`/posts/${id}`)
 
   return (
     <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
@@ -43,7 +54,7 @@ const PostDetails = () => {
           <img className={classes.media} src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
         </div>
       </div>
-      {/* {!!recommendedPosts.length && (
+      {!!recommendedPosts.length && (
         <div className={classes.section}>
           <Typography gutterBottom variant="h5">You might also like:</Typography>
           <Divider />
@@ -54,12 +65,12 @@ const PostDetails = () => {
                 <Typography gutterBottom variant="subtitle2">{name}</Typography>
                 <Typography gutterBottom variant="subtitle2">{message}</Typography>
                 <Typography gutterBottom variant="subtitle1">Likes: {likes.length}</Typography>
-                <img src={selectedFile} width="200px" />
+                <img src={selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} width="200px" />
               </div>
             ))}
           </div>
         </div>
-      )} */}
+      )}
     </Paper>
   );
 };

@@ -4,9 +4,10 @@ import {getPosts, createPosts, updatePost, deletePost, likePost, getPostBySearch
 import auth from "../middlewear/auth.js";
 const router  = express.Router()
 
-router.get('/:id', getPostById)
+
 router.get('/', getPosts)
 router.get('/search', getPostBySearch)
+router.get('/:id', getPostById)
 router.post('/', auth, createPosts)
 router.patch('/:id', auth, updatePost)
 router.delete('/:id', auth, deletePost)
